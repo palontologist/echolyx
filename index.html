@@ -828,6 +828,141 @@ h2{
 
 
 
+/* ---- analyze ---- */
+
+.analyze-wrap{ display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+
+.analyze-panel, .result-panel{ border: 1px solid var(--card-border); background: var(--card-bg); border-radius: 16px; padding: 28px; }
+
+.analyze-panel h3, .result-panel h3{ font-size: 16.5px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px; }
+
+.drop-zone{ border: 1.5px dashed rgba(255,255,255,0.25); border-radius: 12px; padding: 40px 24px; text-align: center; cursor: pointer; transition: border-color 0.25s ease, background 0.25s ease; }
+
+.drop-zone:hover, .drop-zone.drag{ border-color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.04); }
+
+.drop-zone svg{ width: 34px; height: 34px; opacity: 0.7; margin: 0 auto 12px; display: block; }
+
+.drop-zone .dz-main{ font-size: 15px; color: #fff; letter-spacing: -0.01em; }
+
+.drop-zone .dz-sub{ font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+.file-input{ display: none; }
+
+.file-list{ margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+
+.file-chip{ display: flex; align-items: center; gap: 10px; font-size: 13px; color: #d6d6d6; border: 1px solid var(--card-border); background: rgba(255,255,255,0.03); padding: 9px 12px; border-radius: 8px; }
+
+.file-chip .fc-name{ flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.file-chip .fc-size{ color: var(--muted); font-size: 11.5px; flex: none; }
+
+.file-chip .fc-rm{ background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; line-height: 1; padding: 2px 4px; }
+
+.file-chip .fc-rm:hover{ color: #fff; }
+
+.analyze-actions{ display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+
+.result-panel{ min-height: 380px; display: flex; flex-direction: column; }
+
+.result-placeholder{ flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: var(--muted); }
+
+.result-placeholder svg{ width: 40px; height: 40px; opacity: 0.35; }
+
+.result-placeholder .rp-sub{ font-size: 12.5px; }
+
+.verdict-banner{ border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 13px; font-size: 15px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 18px; }
+
+.verdict-banner .vb-emoji{ font-size: 22px; line-height: 1; }
+
+.verdict-banner.normal{ background: rgba(60,200,120,0.12); border: 1px solid rgba(60,200,120,0.45); color: #6fe0a0; }
+
+.verdict-banner.unusual{ background: rgba(242,170,29,0.12); border: 1px solid rgba(242,170,29,0.45); color: #ffc14d; }
+
+.verdict-banner.faulty{ background: rgba(255,70,70,0.12); border: 1px solid rgba(255,70,70,0.5); color: #ff7a7a; }
+
+.verdict-banner.warning{ background: rgba(150,150,150,0.1); border: 1px solid rgba(255,255,255,0.2); color: #bbb; }
+
+.result-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+
+.result-stat{ border: 1px solid var(--card-border); background: rgba(0,0,0,0.25); border-radius: 10px; padding: 16px; }
+
+.result-stat .rs-label{ font-size: 11.5px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+
+.result-stat .rs-value{ font-size: 18px; font-weight: 500; letter-spacing: -0.02em; }
+
+.result-stat .rs-sub{ font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+
+/* score ring */
+.score-ring-wrap{ display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+.score-ring{ position: relative; width: 150px; height: 150px; }
+
+.score-ring svg{ width: 100%; height: 100%; transform: rotate(-90deg); }
+
+.score-ring .ring-bg{ fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 8; }
+
+.score-ring .ring-fg{ fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.9s cubic-bezier(0.22,1,0.36,1), stroke 0.5s ease; }
+
+.score-ring .ring-num{ position: absolute; inset: 0; display: grid; place-items: center; font-size: 30px; font-weight: 600; letter-spacing: -0.03em; }
+
+.score-ring .ring-cap{ position: absolute; inset: auto 0 8px; text-align: center; font-size: 10.5px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* needle gauge */
+.needle-gauge{ display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+.needle-gauge .ng-svg{ width: 160px; height: 92px; overflow: visible; }
+
+.needle-gauge .ng-needle{ transform-origin: 80px 80px; transition: transform 1s cubic-bezier(0.22,1,0.36,1); }
+
+.needle-gauge .ng-read{ font-size: 15px; font-weight: 500; letter-spacing: -0.02em; }
+
+/* explanation */
+.explain-box{ border-top: 1px solid var(--card-border); padding-top: 14px; margin-top: 4px; }
+
+.explain-box summary{ cursor: pointer; list-style: none; font-size: 13.5px; font-weight: 500; color: #d6d6d6; display: flex; align-items: center; justify-content: space-between; letter-spacing: -0.01em; }
+
+.explain-box summary::-webkit-details-marker{ display: none; }
+
+.explain-box summary::after{ content:"+"; font-size: 16px; color: var(--muted); transition: transform 0.25s ease; }
+
+.explain-box[open] summary::after{ transform: rotate(45deg); }
+
+.explain-box .ex-body{ margin-top: 12px; font-size: 13.5px; color: var(--muted); line-height: 1.6; letter-spacing: -0.01em; }
+
+.explain-box .ex-body div{ margin-top: 8px; padding-left: 12px; border-left: 2px solid var(--card-border); }
+
+.batch-stats{ display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+
+.batch-stats .bs-pill{ font-size: 12px; padding: 5px 10px; border-radius: 20px; border: 1px solid var(--card-border); color: #d6d6d6; }
+
+.batch-results{ display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto; }
+
+.batch-row{ display: flex; align-items: center; gap: 11px; font-size: 12.5px; padding: 9px 12px; border: 1px solid var(--card-border); border-radius: 8px; background: rgba(255,255,255,0.02); }
+
+.batch-row .br-name{ flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.batch-row .br-status{ flex: none; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+
+.batch-row .br-status.normal{ background: rgba(60,200,120,0.15); color: #6fe0a0; }
+
+.batch-row .br-status.faulty{ background: rgba(255,70,70,0.15); color: #ff7a7a; }
+
+.batch-row .br-status.unusual{ background: rgba(242,170,29,0.15); color: #ffc14d; }
+
+.spinner{ width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.15); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
+
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+.spinner-wrap{ display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--muted); font-size: 13.5px; padding: 26px 0; }
+
+@media (max-width: 900px){
+
+  .analyze-wrap{ grid-template-columns: 1fr; }
+
+  .result-grid{ grid-template-columns: 1fr; }
+
+}
+
 /* ---- contact / cta ---- */
 
 .contact-panel{ border: 1px solid var(--card-border); background: var(--card-bg); border-radius: 18px; padding: 56px var(--section-x); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; }
@@ -998,7 +1133,7 @@ h2{
 
         <a class="btn btn-solid cta-solid appear appear--btn" href="#contact">Start for Free</a>
 
-        <a class="btn btn-ghost cta-ghost appear appear--side" href="#how-it-works">See it in action</a>
+        <a class="btn btn-ghost cta-ghost appear appear--side" href="#analyze">See it in action</a>
 
       </div>
 
@@ -1295,6 +1430,74 @@ h2{
             <p>Your team gets an alert with the likely cause and urgency, so repairs happen on your schedule, not the machine's.</p>
 
           </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ============ TRY IT / ANALYZE ============ -->
+
+  <section class="section" id="analyze" style="border-top:1px solid var(--border-soft)">
+
+    <div class="section-inner">
+
+      <div class="section-head">
+
+        <h2>Hear it for yourself — <em>try a live analysis</em></h2>
+
+        <p class="section-lede">Upload a recording of a spinning machine — a fan, motor, or pump — and our model will score it against the healthy sound fingerprint it was trained on.</p>
+
+      </div>
+
+
+
+      <div class="analyze-wrap">
+
+        <div class="analyze-panel">
+
+          <h3>Upload audio</h3>
+
+          <div class="drop-zone" id="drop-zone">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0L7 9m5-5l5 5"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+
+            <div class="dz-main">Drop audio files here or <u>browse</u></div>
+
+            <div class="dz-sub">WAV, MP3, FLAC, OGG — up to 10 at once</div>
+
+          </div>
+
+          <input class="file-input" id="file-input" type="file" accept=".wav,.mp3,.flac,.ogg,.m4a,audio/*" multiple>
+
+          <div class="file-list" id="file-list"></div>
+
+          <div class="analyze-actions">
+
+            <button class="btn btn-solid" id="analyze-btn" disabled>Analyze</button>
+
+            <button class="btn btn-ghost" id="clear-btn" style="display:none">Clear</button>
+
+            <label class="btn btn-ghost" style="cursor:pointer">Browse<input class="file-input" type="file" accept=".wav,.mp3,.flac,.ogg,.m4a,audio/*" multiple style="display:none" id="browse-input"></label>
+
+          </div>
+
+          <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.5">Files are processed by the Echolyx analysis engine and are not stored. A trained autoencoder compares each recording against the expected healthy sound profile.</div>
+
+        </div>
+
+
+
+        <div class="result-panel" id="result-panel">
+
+          <h3>Analysis result</h3>
+
+          <div id="result-body"></div>
 
         </div>
 
@@ -1718,73 +1921,418 @@ h2{
 
 
   /* Fan Fault Detection API integration */
-  document.getElementById('file-upload').addEventListener('change', function(e){
 
-    const file = e.target.files[0];
+  const API_URL = 'https://fan-fault-detection.onrender.com';
 
-    if (!file) return;
+  const dropZone = document.getElementById('drop-zone');
 
-    const formData = new FormData();
+  const fileInput = document.getElementById('file-input');
 
-    formData.append('file', file);
+  const browseInput = document.getElementById('browse-input');
 
-    fetch('/predict', {method: 'POST', body: formData})
+  const fileListEl = document.getElementById('file-list');
 
-      .then(r=>r.json())
+  const analyzeBtn = document.getElementById('analyze-btn');
 
-      .then(d=>{
+  const clearBtn = document.getElementById('clear-btn');
 
-        const resultDiv = document.getElementById('prediction-result');
+  const resultBody = document.getElementById('result-body');
 
-        resultDiv.innerHTML = `<strong>Prediction:</strong> ${d.prediction || JSON.stringify(d)}`;
+  let selectedFiles = [];
 
-        resultDiv.style.display = 'block';
 
-      })
 
-      .catch(err=>{
+  function fmtSize(bytes){ return bytes >= 1048576 ? (bytes/1048576).toFixed(1)+' MB' : (bytes/1024).toFixed(0)+' KB'; }
 
-        document.getElementById('prediction-result').innerHTML = 'Error: ' + err.message;
 
-        document.getElementById('prediction-result').style.display = 'block';
 
-      });
+  function renderFileList(){
 
-  });
+    fileListEl.innerHTML = '';
 
-  document.getElementById('use-stgram').addEventListener('change', function(e){
+    selectedFiles.forEach(function(f, i){
 
-    const file = document.getElementById('file-upload').files[0];
+      const chip = document.createElement('div');
 
-    if (!file) return;
+      chip.className = 'file-chip';
 
-    const formData = new FormData();
+      const name = document.createElement('span');
 
-    formData.append('file', file);
+      name.className = 'fc-name';
 
-    fetch('/predict_stgram', {method: 'POST', body: formData})
+      name.textContent = f.name;
 
-      .then(r=>r.json())
+      const size = document.createElement('span');
 
-      .then(d=>{
+      size.className = 'fc-size';
 
-        const resultDiv = document.getElementById('prediction-result');
+      size.textContent = fmtSize(f.size);
 
-        resultDiv.innerHTML = `<strong>Prediction (STgram):</strong> ${d.prediction || JSON.stringify(d)}`;
+      const rm = document.createElement('button');
 
-        resultDiv.style.display = 'block';
+      rm.className = 'fc-rm';
 
-      })
+      rm.textContent = '✕';
 
-      .catch(err=>{
+      rm.setAttribute('aria-label', 'Remove ' + f.name);
 
-        document.getElementById('prediction-result').innerHTML = 'Error: ' + err.message;
+      rm.addEventListener('click', function(){ selectedFiles.splice(i,1); renderFileList(); });
 
-        document.getElementById('prediction-result').style.display = 'block';
+      chip.appendChild(name); chip.appendChild(size); chip.appendChild(rm);
 
-      });
+      fileListEl.appendChild(chip);
 
-  });
+    });
+
+    analyzeBtn.disabled = selectedFiles.length === 0;
+
+    clearBtn.style.display = selectedFiles.length ? 'inline-flex' : 'none';
+
+  }
+
+
+
+  function addFiles(list){
+
+    for (const f of list){
+
+      if (f.type && !f.type.startsWith('audio/')) continue;
+
+      selectedFiles.push(f);
+
+    }
+
+    renderFileList();
+
+  }
+
+
+
+  dropZone.addEventListener('click', function(){ fileInput.click(); });
+
+  fileInput.addEventListener('change', function(e){ addFiles(e.target.files); fileInput.value = ''; });
+
+  browseInput.addEventListener('change', function(e){ addFiles(e.target.files); browseInput.value = ''; });
+
+
+
+  ['dragenter','dragover'].forEach(function(ev){ dropZone.addEventListener(ev, function(e){ e.preventDefault(); dropZone.classList.add('drag'); }); });
+
+  ['dragleave','drop'].forEach(function(ev){ dropZone.addEventListener(ev, function(e){ e.preventDefault(); dropZone.classList.remove('drag'); }); });
+
+  dropZone.addEventListener('drop', function(e){ addFiles(e.dataTransfer.files); });
+
+
+
+  clearBtn.addEventListener('click', function(){ selectedFiles = []; renderFileList(); showPlaceholder(); });
+
+
+
+  function showPlaceholder(){
+
+    resultBody.innerHTML = ''
+
+      + '<div class="result-placeholder">'
+
+      +   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 18 0"/><circle cx="12" cy="12" r="2.4"/></svg>'
+
+      +   '<div>Upload audio to see the verdict</div>'
+
+      +   '<div class="rp-sub">Reconstruction score, health ring and gauge will appear here.</div>'
+
+      + '</div>';
+
+  }
+
+
+
+  showPlaceholder();
+
+
+
+  function verdictFor(r){
+
+    if (!r || r.error) return { key:'warning', title:'Could not analyze', emoji:'⚠️', cls:'warning' };
+
+    const status = (r.status || 'NORMAL').toUpperCase();
+
+    if (status === 'FAULTY') return { key:'faulty', title:'Fault detected', emoji:'🔴', cls:'faulty' };
+
+    if (status === 'UNUSUAL' || status === 'WARNING') return { key:'unusual', title:'Unusual pattern', emoji:'🟡', cls:'unusual' };
+
+    return { key:'normal', title:'Running healthy', emoji:'✅', cls:'normal' };
+
+  }
+
+
+
+  function ringColor(score){
+
+    if (score >= 75) return '#3cc878';
+
+    if (score >= 50) return '#f2aa1d';
+
+    return '#ff4646';
+
+  }
+
+
+
+  function needleAngle(score){
+
+    return -75 + (score/100)*150;
+
+  }
+
+
+
+  function healthScore(r){
+
+    if (r.error) return 0;
+
+    const err = r.reconstruction_error, thr = r.threshold;
+
+    if (thr > 0){
+
+      const ratio = err / thr;
+
+      if (ratio <= 0.5) return 100;
+
+      if (ratio >= 2) return Math.round(Math.max(0, 100 - (ratio-0.5)*70));
+
+      return Math.round(100 - ((ratio-0.5)/1.5)*85);
+
+    }
+
+    return Math.round(r.confidence*100);
+
+  }
+
+
+
+  function renderResult(r){
+
+    const v = verdictFor(r);
+
+    const score = healthScore(r);
+
+    const R = 70, C = 2*Math.PI*R;
+
+    const dash = (score/100)*C;
+
+    const ang = needleAngle(score);
+
+
+
+    let html = ''
+
+      + '<div class="verdict-banner ' + v.cls + '"><span class="vb-emoji">' + v.emoji + '</span>' + v.title + '</div>';
+
+
+
+    if (r.error){ html += '<div style="color:#ff7a7a;font-size:13.5px">' + r.error + '</div>'; resultBody.innerHTML = html; return; }
+
+
+
+    html += '<div class="result-grid">'
+
+      + '<div class="score-ring-wrap"><div class="score-ring">'
+
+      + '<svg viewBox="0 0 160 160">'
+
+      + '<circle class="ring-bg" cx="80" cy="80" r="' + R + '"/>'
+
+      + '<circle class="ring-fg" cx="80" cy="80" r="' + R + '" stroke="' + ringColor(score) + '" stroke-dasharray="' + C + '" stroke-dashoffset="' + (C - dash) + '"/>'
+
+      + '</svg>'
+
+      + '<div class="ring-num">' + score + '</div>'
+
+      + '<div class="ring-cap">HEALTH</div>'
+
+      + '</div></div>'
+
+      + '<div class="needle-gauge"><svg class="ng-svg" viewBox="0 0 160 92">'
+
+      + '<path d="M20 80 A60 60 0 0 1 140 80" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="10" stroke-linecap="round"/>'
+
+      + '<path d="M20 80 A60 60 0 0 1 80 20" fill="none" stroke="rgba(60,200,120,0.55)" stroke-width="10" stroke-linecap="round"/>'
+
+      + '<path d="M80 20 A60 60 0 0 1 113 38" fill="none" stroke="rgba(242,170,29,0.6)" stroke-width="10" stroke-linecap="round"/>'
+
+      + '<path d="M113 38 A60 60 0 0 1 140 80" fill="none" stroke="rgba(255,70,70,0.6)" stroke-width="10" stroke-linecap="round"/>'
+
+      + '<g class="ng-needle" transform="rotate(' + ang + ' 80 80)"><line x1="80" y1="80" x2="80" y2="30" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="80" cy="80" r="6" fill="#fff"/></g>'
+
+      + '</svg>'
+
+      + '<div class="ng-read">Operating condition</div>'
+
+      + '</div>'
+
+      + '</div>';
+
+
+
+    html += '<div class="batch-stats">'
+
+      + '<span class="bs-pill">Status: ' + (r.status||'N/A') + '</span>'
+
+      + '<span class="bs-pill">Score: ' + (r.reconstruction_error!==undefined ? r.reconstruction_error.toFixed(4) : 'N/A') + '</span>'
+
+      + '<span class="bs-pill">Threshold: ' + (r.threshold!==undefined ? r.threshold.toFixed(4) : 'N/A') + '</span>'
+
+      + '<span class="bs-pill">Model: ' + (r.model_used||'N/A') + '</span>'
+
+      + '</div>';
+
+
+
+    const expl = describeResult(r, score, v);
+
+    html += '<details class="explain-box"><summary>What does this mean?</summary><div class="ex-body">' + expl + '</div></details>';
+
+
+
+    resultBody.innerHTML = html;
+
+  }
+
+
+
+  function describeResult(r, score, v){
+
+    const err = r.reconstruction_error, thr = r.threshold;
+
+    const ratio = (thr && thr>0) ? (err/thr) : null;
+
+    const scoreTxt = score>=75 ? 'high' : score>=50 ? 'moderate' : 'low';
+
+    const lines = [];
+
+    lines.push('<div><strong>Health score (' + score + '/100)</strong> — a ' + scoreTxt + ' score suggests the recording is ' + (score>=75 ? 'close to the healthy baseline sound' : score>=50 ? 'noticeably drifting from the baseline' : 'well outside the baseline. This machine should be inspected soon.') + '.</div>');
+
+    if (ratio !== null){
+
+      lines.push('<div><strong>Reconstruction error vs threshold</strong> — the model measures how hard it is to recreate this sound from the healthy fingerprint. Error ' + err.toFixed(4) + ' vs threshold ' + thr.toFixed(4) + ' means the recording is ' + (ratio<1 ? 'within the normal range' : ratio<1.5 ? 'close to the alert line — worth re-testing' : 'clearly abnormal for this machine type') + '.</div>');
+
+    }
+
+    lines.push('<div><strong>What to do next</strong> — ' + (v.key==='normal' ? 'No action needed. Re-test periodically as part of routine monitoring.' : v.key==='unusual' ? 'Re-run the analysis with a fresh recording. If the result holds, schedule an inspection of bearings, alignment, or balance.' : 'Schedule maintenance promptly. Compare with a known-good recording to confirm, and inspect for bearing wear, imbalance, or cavitation.') + '</div>');
+
+    return lines.join('');
+
+  }
+
+
+
+  async function analyzeFiles(){
+
+    if (!selectedFiles.length) return;
+
+    analyzeBtn.disabled = true;
+
+    resultBody.innerHTML = '<div class="spinner-wrap"><div class="spinner"></div>Analyzing — the model is scoring ' + selectedFiles.length + ' file' + (selectedFiles.length>1?'s':'') + '...</div>';
+
+
+
+    try {
+
+      if (selectedFiles.length === 1){
+
+        const fd = new FormData();
+
+        fd.append('file', selectedFiles[0]);
+
+        const res = await fetch(API_URL + '/predict', { method:'POST', body:fd });
+
+        const data = await res.json();
+
+        if (!res.ok) { renderResult({ error: (data.detail||data.error||'Request failed') }); return; }
+
+        renderResult(data);
+
+      } else {
+
+        const fd = new FormData();
+
+        selectedFiles.forEach(function(f){ fd.append('files', f); });
+
+        const res = await fetch(API_URL + '/predict_batch', { method:'POST', body:fd });
+
+        const data = await res.json();
+
+        if (!res.ok) { renderResult({ error:(data.detail||'Request failed') }); return; }
+
+        renderBatch((data.results||[]));
+
+      }
+
+    } catch(err){
+
+      renderResult({ error: 'Could not reach the analysis engine. Check your connection and try again (also possible the free Render instance is waking up — retry in a few seconds).' });
+
+    } finally {
+
+      analyzeBtn.disabled = selectedFiles.length === 0;
+
+    }
+
+  }
+
+
+
+  function renderBatch(results){
+
+    const normal = results.filter(function(r){ return r.status && String(r.status).toUpperCase()==='NORMAL'; }).length;
+
+    const faulty = results.filter(function(r){ return r.status && (String(r.status).toUpperCase()==='FAULTY' || String(r.status).toUpperCase()==='UNUSUAL' || String(r.status).toUpperCase()==='WARNING'); }).length;
+
+    const errors = results.length - normal - faulty;
+
+    let rows = '';
+
+    results.forEach(function(r){
+
+      const v = verdictFor(r);
+
+      if (r.error){ rows += '<div class="batch-row"><span class="br-name">' + r.filename + '</span><span class="br-status warning">Error</span></div>'; return; }
+
+      rows += '<div class="batch-row"><span class="br-name">' + r.filename + '</span><span class="br-status ' + (v.key==='normal'?'normal':v.key==='unusual'?'unusual':'faulty') + '">' + (r.status||'N/A') + '</span></div>';
+
+    });
+
+    resultBody.innerHTML = ''
+
+      + '<div class="batch-stats">'
+
+      + '<span class="bs-pill">' + results.length + ' files</span>'
+
+      + '<span class="bs-pill">' + normal + ' normal</span>'
+
+      + '<span class="bs-pill">' + faulty + ' flagged</span>'
+
+      + '<span class="bs-pill">' + errors + ' failed</span>'
+
+      + '</div>'
+
+      + '<div class="batch-results">' + rows + '</div>'
+
+      + '<details class="explain-box" style="margin-top:14px"><summary>What does this mean?</summary><div class="ex-body">'
+
+      + '<div><strong>Flagged files</strong> — recordings whose reconstruction error crosses the machine-specific threshold are highlighted. These are candidates for inspection.</div>'
+
+      + '<div><strong>Not a substitute for diagnosis</strong> — use this triage to prioritize which machines to check. Confirm findings on the unit before deciding on repair.</div>'
+
+      + '</div></details>';
+
+  }
+
+
+
+  analyzeBtn.addEventListener('click', analyzeFiles);
+
+
 
 })();
 
