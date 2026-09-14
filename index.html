@@ -1002,6 +1002,24 @@ h2{
 
       </div>
 
+      <div class="prediction-upload appear appear--soft" style="margin-top: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
+
+        <p style="color: var(--muted); font-size: var(--lede); margin-bottom: 12px;">Upload an audio recording of your equipment</p>
+
+        <input type="file" id="file-upload" accept="audio/*" style="width: 100%; padding: 10px; margin-top: 8px;">
+
+        <label style="margin-top: 8px; color: var(--muted); font-size: 12px;">
+          <input type="checkbox" id="use-stgram"> Use STgram-MFN for improved detection
+        </label>
+
+        <div id="prediction-result" style="margin-top: 16px; display: none; padding: 12px; background: var(--card-bg); border-radius: 6px; color: #fff; font-size: 13px; min-height: 32px; align-items: center; display: flex; align-items: center; justify-content: center;">
+
+          <strong>Prediction:</strong> waiting...
+
+        </div>
+
+      </div>
+
     </div>
 
   </main>
@@ -1695,6 +1713,76 @@ h2{
       }
 
     });
+
+  });
+
+
+  /* Fan Fault Detection API integration */
+  document.getElementById('file-upload').addEventListener('change', function(e){
+
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    const formData = new FormData();
+
+    formData.append('file', file);
+
+    fetch('/predict', {method: 'POST', body: formData})
+
+      .then(r=>r.json())
+
+      .then(d=>{
+
+        const resultDiv = document.getElementById('prediction-result');
+
+        resultDiv.innerHTML = `<strong>Prediction:</strong> ${d.prediction || JSON.stringify(d)}`;
+
+        resultDiv.style.display = 'block';
+
+      })
+
+      .catch(err=>{
+
+        document.getElementById('prediction-result').innerHTML = 'Error: ' + err.message;
+
+        document.getElementById('prediction-result').style.display = 'block';
+
+      });
+
+  });
+
+  document.getElementById('use-stgram').addEventListener('change', function(e){
+
+    const file = document.getElementById('file-upload').files[0];
+
+    if (!file) return;
+
+    const formData = new FormData();
+
+    formData.append('file', file);
+
+    fetch('/predict_stgram', {method: 'POST', body: formData})
+
+      .then(r=>r.json())
+
+      .then(d=>{
+
+        const resultDiv = document.getElementById('prediction-result');
+
+        resultDiv.innerHTML = `<strong>Prediction (STgram):</strong> ${d.prediction || JSON.stringify(d)}`;
+
+        resultDiv.style.display = 'block';
+
+      })
+
+      .catch(err=>{
+
+        document.getElementById('prediction-result').innerHTML = 'Error: ' + err.message;
+
+        document.getElementById('prediction-result').style.display = 'block';
+
+      });
 
   });
 
